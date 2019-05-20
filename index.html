@@ -1,0 +1,89 @@
+﻿<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="keywords" content=""/>
+		<meta name="description" content=""/>
+		<title>姗</title>
+		<style style="text/css">
+			*{margin:0;padding:0;}
+			body{background:url("images/back1.jpg");background-size:cover;}
+			/*start top*/
+			.top{width:600px;height:300px;margin:60px auto;font-size:30px;font-family:"华文行楷";color:#fff;
+			<!--background:-webkit-linear-gradient(45deg,#ff0000,#ffcc00,#ffff99,#33ccff,#00ff33,#6600ff,#333399);
+			-webkit-background-clip:text;-->}
+			/*end top*/
+			/*start box*/
+			.box{width:310px;height:310px;margin:auto;perspective:800px;/*景深*/}
+			.box .pic{position:relative;transform-style:preserve-3d;/*3d环境*/ animation:play 10s linear infinite;/*动画名称 执行时间 匀速 无限执行*/}
+			.box ul li{list-style:none;position:absolute;top:0;left:0;}
+			/*start box*/
+			/*定义一个关键帧*/
+			@keyframes play{
+				from{transform:rotateY(0deg);}
+				to{transform:rotateY(360deg);}
+			}
+			/*start text*/
+			#text{width:500px;height:200px;color:#6fade1;margin:auto;font-size:24px;font-family:"方正喵呜体";}
+			/*end text*/
+		</style>
+	</head>
+	<body>
+		<!--start top-->
+		<div class="top">
+			<marquee behavior="alternate" style="font-size:50px;">姗♡杰</marquee>
+		</div>
+		<!--end top-->
+		<!--start box-->
+		<div class="box">
+			<div class="pic">
+				<ul>
+					<li><img src="images/love1.jpg" width="200px" height="" alt=""/></li>
+					<li><img src="images/love2.jpg" width="200px" height="" alt=""/></li>
+					<li><img src="images/love3.jpg" width="200px" height="" alt=""/></li>
+					<li><img src="images/love4.jpg" width="200px" height="" alt=""/></li>
+					<li><img src="images/love5.jpg" width="200px" height="" alt=""/></li>
+					<li><img src="images/love6.jpg" width="200px" height="" alt=""/></li>
+				</ul>
+			</div>
+		</div>
+		<!--end box-->
+		<!--start text-->
+		<div id="text" style="font-size:36px;color:white;font-weight:bold;"></div>
+		<!--end text-->
+		<embed src="music.mp3" hidden="true"/>
+		<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+		<!--雪花-->
+		<script src="js/snow.js"></script>
+		<script>
+			$(".pic ul li").each(function(i){//遍历
+				var deg=360/$(".pic ul li").size();//size个数
+				//当前的li对象 添加css样式
+				$(this).css({"transform":"rotateY("+deg*i+"deg) translateZ(216px)"});
+				
+				$.fn.snow({
+					minSize:10,
+					maxSize:15,
+					newOn:500,
+					flakeColor:"#ffffff"
+				});
+			});
+			
+			var i=0;
+			var str="不知道该说什么，在一起不知不觉两年了，有时候的你很成熟，但是有时候你又幼稚的像个孩子，我老是惹你生气，但是每次你都会原谅我，非常抱歉。以后我会更加爱你，争取不惹你生气，嘿嘿。瞎扯了这么多也不知道说什么，一到关键时刻掉链子 - - ！ 向往跟你在一起的日子，一间房，两个人，一猫一狗足矣~~~老婆我爱你！！！！！";
+
+			window.onload=function typing(){
+				//获取div
+
+				var mydiv=document.getElementById("text");
+				mydiv.innerHTML+=str.charAt(i);
+				i++;
+				var id=setTimeout(typing,100);
+				if(i==str.length){
+					clearTimeout(id);
+
+				}
+			}
+		</script>
+	</body>
+</html>
